@@ -1,19 +1,29 @@
-<header>
-  <h1>The GrosSip project !</h1>
-  <p>parcequ'on ne fait pas dans le potin fin.</p>
-  <ul>
-    <li><%= link_to 'Crée ton Gossip', create_gossip_path %></li>
-    <li><%= link_to 'La team', team_path %></li>
-    <li><%= link_to 'Contact', contact_path %></li>
-  </ul>
-</header>
+<br/>
+<div class="d-flex justify-content-center">
+	<h1>Voici la liste des Gossips !</h1> 
+	<br/>
+	
+</div>
+<div class="d-flex justify-content-center">
+	<h4>Il y a déjà <%= Gossip.all.length %> crevards qui ont balancé des ragôts.</h4>
+	<br/>
+	
+</div>
 
-<section>
-  <% Gossip.all.each_with_index do |gossip, i| %>
-    <p>
-      <%= gossip.user.username %><br/>
-      <%= gossip.title %><br/>
-      <%= link_to 'Voir plus', gossips_path(i+1) %>
-    </p>
-  <% end %>
+<br/>
+
+<section class="d-flex justify-content-center flex-wrap">
+<% Gossip.all.each_with_index do |gossip, i| %>
+
+	<div class="card border-dark mb-3" style="min-width: 18rem; max-width: 18rem;">
+	  <div class="card-header"><%= gossip.user.username %></div>
+	  <div class="card-body text-dark">
+	    <h5 class="card-title"><%= gossip.title %></h5>
+	    <p class="card-text"><%= link_to 'Voir plus', gossips_path(i+1) %></p>
+	  </div>
+	</div>
+
+
+<% end %>
 </section>
+
