@@ -7,7 +7,7 @@
 ---
 Sacha de la compta a dit qu'il avait vu Chen de la direction fricoter avec Pierre sa secrétaire, Ondine du marketing serait furieuse si elle l'apprenait, même si pourtant niveau fricotage elle en connaît un rayon ! Tu aimes les râgots ? Alors viens donc casser du sucre sur ton entourage dans l'anonymat le plus total en tout impunité, sur notre nouvelle app unique en son genre !
 
-## Let's clone again  ![]()
+## Let's clone again !
 
 *Come on [baby](https://www.youtube.com/watch?v=eh8eb_ACLl8) make me know you love me so* :
 
