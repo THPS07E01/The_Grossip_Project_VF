@@ -1,6 +1,6 @@
 class Gossip < ApplicationRecord
   belongs_to :user
 
-  validates :title, presence: true
-  validates :content, presence: true
+  validates_presence_of :title, :message => "Tu as oublié le titre, bébé"
+  validates_presence_of :content, :message => "Tu as oublié le contenu du potin, bébé"
 end

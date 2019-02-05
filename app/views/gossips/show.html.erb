@@ -1,0 +1,10 @@
+
+<section class="d-flex justify-content-center">
+<div >
+<br/>
+  <h3>Grossip n° <%= params[:id] %></h3>
+<p>Auteur : <%= link_to "#{@gossip_user_username}", user_path(@gossip_user_id) %></p>
+  <p><strong>Titre</strong> : <%= Gossip.find(params[:id]).title %></p>
+  <p><strong>Contenu</strong> : <%= Gossip.find(params[:id]).content %></p>
+</div>
+</section>
