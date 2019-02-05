@@ -16,16 +16,37 @@
 
 <br/>
 
-<section class="d-flex justify-content-center flex-wrap">
-<% Gossip.all.each_with_index do |gossip, i| %>
 
-	<div class="card border-dark mb-3" style="min-width: 18rem; max-width: 18rem;">
-	  <div class="card-header text-center text-primary text-capitalize"><strong><%= gossip.user.username %></strong></div>
-	  <div class="card-body text-center">
-	    <h5 class="card-title text-dark"><%= gossip.title %></h5>
-	    <p class="card-text text-link"><%= link_to 'Voir plus', gossip_path(i+1) %></p>
-	  </div>
-	</div>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User</th>
+      <th scope="col">Created</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
 
-<% end %>
-</section>
+	<% Gossip.all.each_with_index do |gossip, i| %>
+  <tbody>
+    <tr>
+      <th scope="row"><%= gossip.id %></th>
+      <td><%= gossip.user.username %></td>
+      <td><%= gossip.created_at %></td>
+      <td><%= gossip.title %></td>
+    </tr>
+	<% end %>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
