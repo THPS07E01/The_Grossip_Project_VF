@@ -1,7 +1,10 @@
 
-<section>
-  <p>Voici la page du gossip n° <%= params[:gossip_id] %></p>
+<section class="d-flex justify-content-center">
+<div >
+<br/>
+  <h3>Grossip n° <%= params[:gossip_id] %></h3>
 <p>Auteur : <%= link_to "#{Gossip.find(params[:gossip_id]).user.username}", view_user_path(Gossip.find(params[:gossip_id]).user.id) %></p>
-  <p>Titre : <%= Gossip.find(params[:gossip_id]).title %></p>
-  <p>Contenu : <%= Gossip.find(params[:gossip_id]).content %></p>
+  <p><strong>Titre</strong> : <%= Gossip.find(params[:gossip_id]).title %></p>
+  <p><strong>Contenu</strong> : <%= Gossip.find(params[:gossip_id]).content %></p>
+</div>
 </section>

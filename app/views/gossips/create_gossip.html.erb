@@ -1,9 +1,26 @@
-<h1>Bienvenue dans la création de Gossips</h1>
+<div class="d-flex justify-content-center">
+	<br/>
+  <h1>Tu peux maintenant librement créer ton Grossip ! A toi de jouer !</h1>
+</div>
+<br/>
+
+<section class="d-flex justify-content-center">
 
 <form action='/create_gossip/' method='POST'>
       <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-      Balance ton blase : <input type='text' name='gossip_username'/><br/>
-      Balance ton title : <input type='text' name='gossip_title'/><br/>
-      Balance ton potin : <input type='text' name='gossip_content'/><br/>
-      <input type='submit'/>
+      <div class="d-flex justify-content-center">
+      <input type='text' name='gossip_username' placeholder='Ton blase'/><br/>
+      </div>
+      <div class="d-flex justify-content-center">
+      <input type='text' name='gossip_title' placeholder='Ton titre'/><br/>
+      </div>
+      <div class="d-flex justify-content-center">
+      <input type='text' name='gossip_content' placeholder='Ton potin'/><br/>
+    
+      </div>
+      <br/>
+       <div class="d-flex justify-content-center">
+      <input type='submit' value='Envoyer'/>
+      </div>
 </form>
+</section>
