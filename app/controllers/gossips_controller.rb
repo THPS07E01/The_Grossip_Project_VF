@@ -1,7 +1,7 @@
 class GossipsController < ApplicationController
 
   def index
-    # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
+    @gossip_id = params[:id]
   end
 
   def new
@@ -11,14 +11,14 @@ class GossipsController < ApplicationController
 
     User.create(username: params['gossip_username'])
     @gossip = Gossip.new(user_id: User.last.id, title: params['gossip_title'], content: params['gossip_content'])
-  if @gossip.save     # si ça marche, il redirige vers la page d'index du site
-    flash[:success] = 'It worked : Gossip successfully added!'
-    redirect_to gossips_path
-  else      # sinon, il render la view new (qui est celle sur laquelle on est déjà)
-    flash[:danger] = 'Something went wrong.'
-    render 'new'
-    flash.delete(:danger)
-  end
+    if @gossip.save     # si ça marche, il redirige vers la page d'index du site
+      flash[:success] = 'It worked : Gossip successfully added!'
+      redirect_to gossips_path
+    else      # sinon, il render la view new (qui est celle sur laquelle on est déjà)
+      flash[:danger] = 'Something went wrong.'
+      render 'new'
+      flash.delete(:danger)
+    end
   end
 
 

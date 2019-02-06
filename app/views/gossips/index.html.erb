@@ -3,7 +3,7 @@
 <% end %>
 <div class="d-flex justify-content-center mt-3">
 
-  <h1 class="text-primary">Bienvenue sur Grossip.com, la plateforme n°1 de création de Grossips !</h1><br/>
+  <h1 class="text-primary">Liste des Grossips</h1><br/>
 
 	<br/>
 	
@@ -32,10 +32,10 @@
 	<% Gossip.all.each_with_index do |gossip, i| %>
     <tr>
       <th scope="row"><%= gossip.id %></th>
-      <td><%= gossip.user.username %></td>
+      <td><%= link_to "#{gossip.user.username}", user_path(gossip.user.id) %></td>
       <td><%= gossip.created_at.strftime("%F %T") %></td>
       <td><%= gossip.title %></td>
-			<td><%= link_to 'Voir plus', gossip_path(i+1) %></td>
+			<td><%= link_to 'Voir', gossip_path(i+1) %></td>
     </tr>
 	<% end %>
   </tbody>
