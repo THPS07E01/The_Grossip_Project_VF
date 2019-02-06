@@ -22,7 +22,9 @@
 
          <script>
 $(document).ready(function() {
-    $('#test').DataTable();
+    $('#test').DataTable( {
+      "order": [[ 2, "desc" ]]
+     } );
 } );
     </script>
 
