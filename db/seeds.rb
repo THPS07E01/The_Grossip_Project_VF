@@ -1,7 +1,11 @@
 User.destroy_all
 Gossip.destroy_all
+Comment.destroy_all
+City.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('gossips')
+ActiveRecord::Base.connection.reset_pk_sequence!('cities')
+ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 
 50.times do |c|
     city = City.create!(
@@ -34,4 +38,11 @@ puts '=== User DB created ==='
 end
 puts '=== Gossip DB created ==='
 
-
+300.times do |c|
+    comment = Comment.create!(
+        user_id: User.all.sample.id,
+        gossip_id: Gossip.all.sample.id,
+        content: Faker::DrWho.quote )
+    print '.'
+end
+puts '=== Comment DB created ==='
