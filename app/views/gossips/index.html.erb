@@ -30,7 +30,7 @@ $(document).ready(function() {
       <th scope="col">User</th>
       <th scope="col">Created</th>
       <th scope="col">Title</th>
-			<th scope="col">Link</th>
+			<th scope="col" class="text-center">Link</th>
     </tr>
   </thead>
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
       <td><%= link_to "#{gossip.user.username}", user_path(gossip.user.id) %></td>
       <td><%= gossip.created_at.strftime("%F %T") %></td>
       <td class="font-italic"><%= gossip.title %></td>
-			<td>
+			<td  class="text-center">
           <a href="<%= gossip_path(gossip.id) %>">[VIEW] </a>    
           <a href="<%= edit_gossip_path(gossip.id) %>">[EDIT]</a>
           <a href="<%= gossip_path(gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE">[DELETE]</a>
