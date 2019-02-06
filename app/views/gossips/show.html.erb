@@ -1,3 +1,7 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
 <div class="d-flex justify-content-center mt-3">
 
   <h1 class="text-primary">Grossip n° <%= params[:id] %></h1><br/>
@@ -23,4 +27,10 @@
   <p><strong>Titre</strong> : <%= Gossip.find(params[:id]).title %></p>
   <p><strong>Contenu</strong> : <%= Gossip.find(params[:id]).content %></p>
 </div>
+
+<div>
+<%= link_to ' [EDIT]  ', edit_gossip_path(params[:id]) %>
+</div>
+
 </section>
+

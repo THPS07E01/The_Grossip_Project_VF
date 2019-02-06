@@ -34,20 +34,25 @@ class GossipsController < ApplicationController
   end
 
   def edit
-    # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
+    @gossip = Gossip.find(params[:id])
   end
 
   def update
-    @model = Model.find(params[:id])
-    if @model.update(tes_params)
-      redirect_to @model
+    @gossip = Gossip.find(params[:id])
+    if post_params = params.require(:gossip).permit(:title, :content)
+      @gossip.update(post_params)
+      flash[:success] = 'It worked : Gossip successfully edited!'
+      redirect_to :gossip
     else
+      flash[:danger] = 'Something went wrong.'
       render :edit
+      flash.delete(:danger)
     end
   end
 
   def destroy
-    # Méthode qui récupère le potin concerné et le détruit en base
-    # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to gossips_path
   end
 end

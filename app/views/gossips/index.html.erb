@@ -35,15 +35,20 @@ $(document).ready(function() {
   </thead>
 
   <tbody >
-	<% Gossip.all.each_with_index do |gossip, i| %>
+	<% Gossip.all.reverse.each do |gossip| %>
     <tr>
-      <th scope="row"><%= gossip.id %></th>
+      <th scope="row" data-defaultsign="month" data-sortcolumn="1" data-sortkey="1-1"><%= gossip.id %></th>
       <td><%= link_to "#{gossip.user.username}", user_path(gossip.user.id) %></td>
       <td><%= gossip.created_at.strftime("%F %T") %></td>
       <td class="font-italic"><%= gossip.title %></td>
-			<td><%= link_to ' [VIEW] ', gossip_path(i+1) %><%= link_to ' [EDIT]  ', gossip_path(i+1) %><%= link_to ' [DELE] ', gossip_path(i+1) %></td>
+			<td>
+          <a href="<%= gossip_path(gossip.id) %>">[VIEW] </a>    
+          <a href="<%= edit_gossip_path(gossip.id) %>">[EDIT]</a>
+          <a href="<%= gossip_path(gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE">[DELETE]</a>
+      </td>
     </tr>
 	<% end %>
   </tbody>
 </table>
 <section>
+

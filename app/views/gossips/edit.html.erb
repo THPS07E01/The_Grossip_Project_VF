@@ -1,1 +1,33 @@
-<h1>youhohuhouhou</h1>
+<div class="d-flex justify-content-center mt-3">
+
+  <h1 class="text-primary">Editer le Grossip</h1><br/>
+
+	<br/>
+	
+</div>
+<div class="d-flex justify-content-center">
+	<h4 class="text-secondary">Rien de tel pour faire oublier les trucs dégueulasses que tu as lâchés</h4>
+	<br/>
+	
+</div>
+
+<br/>
+
+<%= form_for @gossip do |f| %>
+
+  <div class="form-group">
+    <label>Titre</label>
+      <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label>Contenu</label>
+      <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <Button type="submit" class="btn btn-primary">Envoyer</Button>
+  </div>
+  </div>
+
+  <% end %>
+
+  <a href="<%= gossip_path(@gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE">[DELETE]</a>
