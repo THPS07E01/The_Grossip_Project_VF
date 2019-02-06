@@ -8,8 +8,11 @@ class GossipsController < ApplicationController
   end
   
   def create
-
-    User.create(username: params['gossip_username'])
+    #Création du user
+    @city_id = City.all.sample.id
+    User.create(username: params['gossip_username'], city_id: @city_id)
+   
+    #Création du gossip
     @gossip = Gossip.new(user_id: User.last.id, title: params['gossip_title'], content: params['gossip_content'])
     if @gossip.save     # si ça marche, il redirige vers la page d'index du site
       flash[:success] = 'It worked : Gossip successfully added!'

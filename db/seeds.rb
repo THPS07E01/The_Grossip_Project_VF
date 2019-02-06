@@ -3,6 +3,15 @@ Gossip.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('gossips')
 
+50.times do |c|
+    city = City.create!(
+        name: Faker::Pokemon.location,
+        zipcode: rand(10000..97000)
+    )
+    print '.'
+end
+puts '=== City DB created ==='
+
 50.times do |i|
 	user = User.create!(
     first_name: Faker::Superhero.prefix,
@@ -10,7 +19,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('gossips')
     username: Faker::DragonBall.character,
     email: Faker::Internet.email,
     age: rand(12..120),
-    city: Faker::StarWars.planet,
+    city_id: rand(1..50),
     description: Faker::StrangerThings.quote)
   print '.'
 end
@@ -24,3 +33,5 @@ puts '=== User DB created ==='
 	print '.'
 end
 puts '=== Gossip DB created ==='
+
+

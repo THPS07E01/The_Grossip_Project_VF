@@ -1,5 +1,4 @@
-class UsersController < ApplicationController
-
+class CitiesController < ApplicationController
   def index
     # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
   end
@@ -8,7 +7,6 @@ class UsersController < ApplicationController
   end
   
   def create
-
   end
 
   def show
@@ -28,5 +26,4 @@ class UsersController < ApplicationController
     # Méthode qui récupère le potin concerné et le détruit en base
     # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
   end
-
 end
