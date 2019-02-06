@@ -1,8 +1,24 @@
+<div class="d-flex justify-content-center mt-3">
+
+  <h1 class="text-primary">Grossip n° <%= params[:id] %></h1><br/>
+
+	<br/>
+	
+</div>
+<div class="d-flex justify-content-center">
+	<h4 class="text-secondary text-center">Certainement encore écrit par un être sournois et malveillant..!</h4>
+	<br/>
+	
+</div>
+
+<br/>
+
+
 
 <section class="d-flex justify-content-center">
 <div >
 <br/>
-  <h3>Grossip n° <%= params[:id] %></h3>
+  <h3></h3>
 <p>Auteur : <%= link_to "#{@gossip_user_username}", user_path(@gossip_user_id) %></p>
   <p><strong>Titre</strong> : <%= Gossip.find(params[:id]).title %></p>
   <p><strong>Contenu</strong> : <%= Gossip.find(params[:id]).content %></p>
