@@ -34,7 +34,7 @@
       <th scope="row"><%= gossip.id %></th>
       <td><%= link_to "#{gossip.user.username}", user_path(gossip.user.id) %></td>
       <td><%= gossip.created_at.strftime("%F %T") %></td>
-      <td><%= gossip.title %></td>
+      <td class="font-italic"><%= gossip.title %></td>
 			<td><%= link_to 'Voir', gossip_path(i+1) %></td>
     </tr>
 	<% end %>
