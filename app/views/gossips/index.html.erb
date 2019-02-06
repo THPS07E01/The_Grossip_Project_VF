@@ -16,7 +16,7 @@
 
 <br/>
 
-
+<section class="mx-auto" style="width: 1000px;">
 <table class="table table-striped table-dark">
   <thead>
     <tr>
@@ -24,6 +24,7 @@
       <th scope="col">User</th>
       <th scope="col">Created</th>
       <th scope="col">Title</th>
+			<th scope="col">Link</th>
     </tr>
   </thead>
 
@@ -32,9 +33,11 @@
     <tr>
       <th scope="row"><%= gossip.id %></th>
       <td><%= gossip.user.username %></td>
-      <td><%= gossip.created_at %></td>
+      <td><%= gossip.created_at.strftime("%F %T") %></td>
       <td><%= gossip.title %></td>
+			<td><%= link_to 'Voir plus', gossip_path(i+1) %></td>
     </tr>
 	<% end %>
   </tbody>
 </table>
+<section>
