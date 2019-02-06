@@ -38,9 +38,12 @@ class GossipsController < ApplicationController
   end
 
   def update
-    # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
-    # pour info, le contenu de ce formulaire sera accessible dans le hash params
-    # Une fois la modification faite, on redirige généralement vers la méthode show (pour afficher le potin modifié)
+    @model = Model.find(params[:id])
+    if @model.update(tes_params)
+      redirect_to @model
+    else
+      render :edit
+    end
   end
 
   def destroy

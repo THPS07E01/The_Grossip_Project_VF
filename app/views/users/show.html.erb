@@ -26,11 +26,11 @@
   <p><strong>Ville</strong> : <%= User.find(params[:id]).city %></p>
   <p><strong>Description</strong> : <%= User.find(params[:id]).description %></p>
   <p><strong>Gossips postés</strong> :</p>
-  <% User.find(42).gossips.each do |gossip| %>
+  <% User.find(params[:id]).gossips.each do |gossip| %>
   <p>
     <%= gossip.title %><br/>
     <%= gossip.content %><br/>
-    <%= link_to 'Voir le gossip', gossips_path(gossip.id) %>
+    <%= link_to 'Voir le gossip', gossip_path(gossip.id) %>
   </p>
   <% end %>
 </div>
