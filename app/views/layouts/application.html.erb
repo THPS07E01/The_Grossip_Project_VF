@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>ProjectG</title>
+    <title>The Grossip Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <!-- Required meta tags -->
+
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/united/bootstrap.min.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.3.1.js">    </script>
     
@@ -18,18 +23,16 @@
     
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-
-
-         <script>
-$(document).ready(function() {
-    $('#test').DataTable( {
-      "order": [[ 2, "desc" ]]
-     } );
-} );
+    <!-- Script Table Gossips#index -->
+    <script>
+    $(document).ready(function() {
+        $('#test').DataTable( {
+          "order": [[ 2, "desc" ]]
+        } );
+    } );
     </script>
-
-
   </head>
+
   <body >
      <nav class="navbar navbar-expand-lg navbar  bg-dark ">
    <a class="navbar-brand text-white bg-dark" <%= link_to 'The Grossip Project', gossips_path %></a>
