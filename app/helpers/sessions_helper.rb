@@ -10,8 +10,6 @@ module SessionsHelper
   end
 
   def logged_in?
-    if session[:user_id] != nil
-    end
+    current_user != nil ?  true : false
   end
-
 end

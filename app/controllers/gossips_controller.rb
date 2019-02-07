@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, except: [:index]
+
 
   def index
     @gossip_id = params[:id]
@@ -8,12 +10,8 @@ class GossipsController < ApplicationController
   end
   
   def create
-    #Création du user
-    @city_id = City.all.sample.id
-    User.create(username: params['gossip_username'], city_id: @city_id, password:"1234")
-   
     #Création du gossip
-    @gossip = Gossip.new(user_id: User.last.id, title: params['gossip_title'], content: params['gossip_content'])
+    @gossip = Gossip.new(user_id: current_user.id, title: params['gossip_title'], content: params['gossip_content'])
     if @gossip.save     # si ça marche, il redirige vers la page d'index du site
       flash[:success] = 'It worked : Gossip successfully added!'
       redirect_to gossips_path

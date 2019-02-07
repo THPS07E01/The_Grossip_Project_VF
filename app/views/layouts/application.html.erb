@@ -66,7 +66,13 @@
 <div>
     <ul class="navbar-nav bg-dark">
       <li class="nav-item">
-        <a class="nav-link text-white" <%= link_to 'SIGN IN', new_session_path %></a>
+
+<% if logged_in? %>
+<%= link_to 'LOG OUT', session_path(session[:user_id]), method: :delete %>
+<% else %>
+<%= link_to 'LOG IN', new_session_path %>
+ <% end %>
+
       </li>
     </ul>
 </nav>

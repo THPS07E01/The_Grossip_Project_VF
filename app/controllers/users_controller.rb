@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user, except: [:create, :new]
+
   def index
     # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
   end
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
       what_city_id = City.find_by(name: params['user_city']).id
       save_city = false
     else
-      what_city_id = City.last.id + 1
+      City.count == 0 ? what_city_id = 1 : what_city_id = City.last.id + 1
     end
 
     #Création du user
