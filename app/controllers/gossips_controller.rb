@@ -10,7 +10,7 @@ class GossipsController < ApplicationController
   def create
     #Création du user
     @city_id = City.all.sample.id
-    User.create(username: params['gossip_username'], city_id: @city_id)
+    User.create(username: params['gossip_username'], city_id: @city_id, password:"1234")
    
     #Création du gossip
     @gossip = Gossip.new(user_id: User.last.id, title: params['gossip_title'], content: params['gossip_content'])
@@ -23,9 +23,6 @@ class GossipsController < ApplicationController
       flash.delete(:danger)
     end
   end
-
-
-
 
   def show
     @gossip_id = params[:id]

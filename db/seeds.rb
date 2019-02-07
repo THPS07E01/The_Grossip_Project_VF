@@ -24,7 +24,9 @@ puts '=== City DB created ==='
     email: Faker::Internet.email,
     age: rand(12..120),
     city_id: rand(1..50),
-    description: Faker::StrangerThings.quote)
+    description: Faker::StrangerThings.quote,
+    password: "123456"
+    )
   print '.'
 end
 puts '=== User DB created ==='

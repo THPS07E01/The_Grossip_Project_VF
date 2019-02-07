@@ -7,7 +7,60 @@ class UsersController < ApplicationController
   def new
   end
   
-  def create
+  def create  # Inscription d'un nouvel user.
+    city = City.new(name: params['user_city'], zipcode: rand(1..99999))
+    save_city = true
+
+    if City.find_by(name: params['user_city']) # Vérifie si la ville existe déjà dans la DB
+      what_city_id = City.find_by(name: params['user_city']).id
+      save_city = false
+    else
+      what_city_id = City.last.id + 1
+    end
+
+    #Création du user
+      user = User.new(
+    username: params['user_username'], 
+    first_name: params['user_first_name'], 
+    last_name: params['user_last_name'], 
+    email: params['user_email'], 
+    city_id: what_city_id,
+    password: params['user_password'], 
+    age: params['user_age'], 
+    description: params['user_description']
+    )
+
+    if save_city == true
+      if city.save && user.save
+        redirect_to root_path(user.id)
+      else
+        render new_user_path
+      end
+    else
+      if user.save
+        flash[:success] = 'It worked : Gossip successfully added!'
+        redirect_to new_session_path
+      else
+        flash[:danger] = 'Something went wrong.'
+        render 'new'
+        flash.delete(:danger)
+      end
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   end
 
