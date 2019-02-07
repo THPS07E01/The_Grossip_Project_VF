@@ -21,11 +21,11 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">User</th>
-      <th scope="col">Created</th>
-      <th scope="col">Title</th>
+      <th scope="col">Utilisateur</th>
+      <th scope="col">Créé le</th>
+      <th scope="col">Titre</th>
       <th scope="col">Ville</th>
-			<th scope="col" class="text-center">Link</th>
+			<th scope="col" class="text-center"></th>
     </tr>
   </thead>
 
@@ -34,18 +34,24 @@
     <tr>
       <th scope="row" data-defaultsign="month" data-sortcolumn="1" data-sortkey="1-1"><%= gossip.id %></th>
       <td><%= link_to "#{gossip.user.username}", user_path(gossip.user.id) %></td>
-      <td><%= gossip.created_at.strftime("%F %T") %></td>
+      <td><%= gossip.created_at.strftime("%d/%m/%Y") %></td>
       <td class="font-italic"><%= gossip.title %></td>
       <td><%= gossip.user.city.name %></td>
-			<td  class="text-center">
-          <a href="<%= gossip_path(gossip.id) %>">[VIEW] </a>    
-          <a href="<%= edit_gossip_path(gossip.id) %>">[EDIT]</a>
-          <a href="<%= gossip_path(gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE">[DELETE]</a>
+      <td  class="text-center">
+          <a class="text-decoration-none" style="a:hover {color: #ffffff;}" href="<%= gossip_path(gossip.id) %>"><i class="far fa-eye"></i></a>    
+      
+          <% if logged_in? && current_user.id == gossip.user_id %>
+          <a  href="<%= edit_gossip_path(gossip.id) %>"><i class="mr-3 ml-3 fas fa-pencil-alt"></i> </a>
+          <a href="<%= gossip_path(gossip.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE"><i class="fas fa-trash-alt"></i></a>
+          <% else %>
+          <% end %>
       </td>
     </tr>
 	<% end %>
   </tbody>
 </table>
 <section>
+
+
 
 

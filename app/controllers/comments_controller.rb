@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     
     def create
       
-      @comment = Comment.new(gossip_id: params[:gossip_id], user_id: User.last.id, content: params['comment_content'])
+      @comment = Comment.new(gossip_id: params[:gossip_id], user_id: current_user.id, content: params['comment_content'])
       if @comment.save     # si ça marche, il redirige vers la page d'index du site
         flash[:success] = 'It worked : Comment successfully added!'
         redirect_to gossip_path(params[:gossip_id])
