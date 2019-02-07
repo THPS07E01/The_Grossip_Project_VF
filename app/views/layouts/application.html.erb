@@ -61,9 +61,9 @@
       <li class="nav-item">
 
 <% if logged_in? %>
-<%= link_to 'LOG OUT', session_path(session[:user_id]), class:'text-decoration-none', method: :delete %>
+<%= link_to 'Déconnexion', session_path(session[:user_id]), class:'login text-decoration-none', method: :delete %>
 <% else %>
-<%= link_to 'LOG IN', new_session_path, class:'text-decoration-none' %>
+<%= link_to 'Connexion', new_session_path, class:'login text-decoration-none' %>
  <% end %>
 
       </li>
