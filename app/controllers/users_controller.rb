@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       end
     else
       if user.save
-        flash[:success] = 'It worked : Gossip successfully added!'
+        flash[:success] = 'Utilisateur créé avec succès!'
         redirect_to new_session_path
       else
         flash[:danger] = 'Something went wrong.'

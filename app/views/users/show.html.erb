@@ -13,7 +13,7 @@
  
   <p class="d-flex justify-content-center"><strong>Age</strong> : <%= User.find(params[:id]).age %></p>
   <p class="d-flex justify-content-center"><strong>Email</strong> : <%= User.find(params[:id]).email %></p>
-  <p class="d-flex justify-content-center"><strong>Ville</strong> : <a href="<%= city_path(User.find(params[:id]).city.id) %>"><%= User.find(params[:id]).city.name %></a></p>
+  <p class="d-flex justify-content-center"><strong>Ville</strong> :  <a href="<%= city_path(User.find(params[:id]).city.id) %>"><%= User.find(params[:id]).city.name %></a></p>
   <p class="d-flex justify-content-center"><strong>Gossips postés</strong> :</p>
   <% User.find(params[:id]).gossips.each do |gossip| %>
   <p>

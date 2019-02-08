@@ -39,10 +39,10 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     if post_params = params.require(:gossip).permit(:title, :content)
       @gossip.update(post_params)
-      flash[:success] = 'It worked : Gossip successfully edited!'
+      flash[:success] = 'Grossip édité avec succès!'
       redirect_to :gossip
     else
-      flash[:danger] = 'Something went wrong.'
+      flash[:danger] = 'Une erreur est survenue.'
       render :edit
       flash.delete(:danger)
     end

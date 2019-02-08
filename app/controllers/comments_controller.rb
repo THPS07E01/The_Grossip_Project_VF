@@ -11,10 +11,10 @@ class CommentsController < ApplicationController
       
       @comment = Comment.new(gossip_id: params[:gossip_id], user_id: current_user.id, content: params['comment_content'])
       if @comment.save     # si ça marche, il redirige vers la page d'index du site
-        flash[:success] = 'It worked : Comment successfully added!'
+        flash[:success] = 'Commentaire ajouté!'
         redirect_to gossip_path(params[:gossip_id])
       else      # sinon, il render la view new (qui est celle sur laquelle on est déjà)
-        flash[:danger] = 'Something went wrong.'
+        flash[:danger] = 'Une erreur est survenue.'
         redirect_to gossip_path(params[:gossip_id])
         flash.delete(:danger)
       end
