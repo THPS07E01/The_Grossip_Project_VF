@@ -13,10 +13,10 @@ class GossipsController < ApplicationController
     #Création du gossip
     @gossip = Gossip.new(user_id: current_user.id, title: params['gossip_title'], content: params['gossip_content'])
     if @gossip.save     # si ça marche, il redirige vers la page d'index du site
-      flash[:success] = 'It worked : Gossip successfully added!'
+      flash[:success] = "Bien joué #{current_user.username}! Ton Grossip a été ajouté!"
       redirect_to gossips_path
     else      # sinon, il render la view new (qui est celle sur laquelle on est déjà)
-      flash[:danger] = 'Something went wrong.'
+      flash[:danger] = 'Une erreur est survenue.'
       render 'new'
       flash.delete(:danger)
     end
