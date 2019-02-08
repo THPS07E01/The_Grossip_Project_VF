@@ -1,5 +1,8 @@
 <% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
+<div class="alert alert-<%= key %> alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <%= value %>
+</div>
 <% end %>
 
 
@@ -43,9 +46,10 @@
   </section>
 
 
-
-
+<% if logged_in? && current_user.id == Gossip.find(params[:id]).user_id %>
 <div>
-<%= link_to ' [EDIT]  ', edit_gossip_path(params[:id]) %>
+          <a  href="<%= edit_gossip_path(Gossip.find(params[:id]).user_id) %>"><i class="mr-3 ml-3 fas fa-pencil-alt"></i> </a>
+          <a href="<%= gossip_path(Gossip.find(params[:id]).user_id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE"><i class="fas fa-trash-alt"></i></a>
+          <% else %>
+          <% end %>
 </div>
-

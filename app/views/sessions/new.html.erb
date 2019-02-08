@@ -1,6 +1,10 @@
 <% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
+<div class="alert alert-<%= key %> alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <%= value %>
+</div>
 <% end %>
+
 
 <div class="d-flex justify-content-center mt-3">
 
