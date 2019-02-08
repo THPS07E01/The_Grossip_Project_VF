@@ -10,3 +10,11 @@ td a:hover {
 #test_info {
   color: white!important;
 }
+
+#test_filter {
+  display: flex!important;
+  justify-content: end!important;
+}
+
+#test_filter > label:nth-child(1) {
+}

@@ -16,3 +16,12 @@
 .login:hover {
 color: white;
 }
+
+.dataTables_info {
+  display: none;
+}
+
+.dataTables_length {
+  display: flex;
+  justify-content: center;
+}

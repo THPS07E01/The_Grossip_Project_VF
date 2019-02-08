@@ -26,7 +26,15 @@
     <script>
     $(document).on('turbolinks:load', function() {
         $('#test').DataTable( {
-          "order": [[ 2, "desc" ]]
+          "order": [[ 2, "desc" ]],
+          "iDisplayLength": 25,
+          "bLengthChange": false,
+          "sDom": '<"search-box"r>lftip',
+          "oLanguage": {
+            "sLengthMenu": "Gossips _MENU_ ",
+            "sSearch": " _INPUT_",
+            
+          }
         } );
     } );
     </script>
