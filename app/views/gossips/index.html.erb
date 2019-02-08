@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
-<div class="alert alert-<%= key %> alert-dismissible">
+<div class="alert alert-<%= key %> alert-dismissible fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <%= value %>
 </div>
@@ -39,8 +39,8 @@
      </script>
 
 <div class="d-flex justify-content-center">
-<section class="w-75">
-<table id="test" class="table table-striped table-dark table-hover">
+<section class="w-75 table-responsive">
+<table id="test" class="table table-striped table-dark table-hover ">
   <thead>
     <tr>
       <th scope="col">#</th>
