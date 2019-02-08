@@ -2,36 +2,29 @@
   <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
 
-<div class="d-flex justify-content-center mt-3">
 
-  <h1 class="text-primary">Grossip n° <%= params[:id] %></h1><br/>
-
-	<br/>
-	
-</div>
-<div class="d-flex justify-content-center">
-	<h4 class="text-secondary text-center">Certainement encore écrit par un être sournois et malveillant..!</h4>
-	<br/>
-	
-</div>
-
-<br/>
-
-
-
-<section class="d-flex justify-content-center">
+<section class="d-flex justify-content-center mt-4">
 <div >
 <br/>
-  <h3></h3>
-<p>Auteur : <%= link_to "#{@gossip_user_username}", user_path(@gossip_user_id) %></p>
-  <p><strong>Titre</strong> : <%= Gossip.find(params[:id]).title %></p>
-  <p><strong>Contenu</strong> : <%= Gossip.find(params[:id]).content %></p>
+
+
+<div class="d-flex justify-content-center">
+  <h3 class="text-primary"><strong><%= Gossip.find(params[:id]).title %></strong></h3>
+</div>
+<div class="d-flex justify-content">
+  <h4 class="font-italic text-secondary">- <%= Gossip.find(params[:id]).content %></h4>
+</div>
+<div class="d-flex justify-content-end">
+  <h6>by- <%= link_to "#{@gossip_user_username}", user_path(@gossip_user_id) %></h6>
+</div>
+<div class="d-flex justify-content-center">
   <p><strong>Commentaires</strong> :</p>
+</div>
 
     <% Gossip.find(params[:id]).comments.each do |comment| %>
     <p> 
-      <%= User.find(comment.user_id).username %>
-      :
+      <span class="text-info"> <%= User.find(comment.user_id).username %> </span>
+      -
       <%= comment.content %><br/>
     </p>
     <% end %>
@@ -43,13 +36,13 @@
         <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
         <input type='hidden' name='gossip_id' value='<%= @gossip_id %>'>
         <div class="d-flex justify-content-center">
-          <input type='text' name='comment_content' placeholder='Ton commentaire'/><br/>
-        </div>
-        <div class="d-flex justify-content-center">
-          <input type='submit' class="btn btn-danger mt-2 mb-4" value='Envoyer'/>
+          <input type='text' name='comment_content' placeholder='Ton commentaire' /><br/>
+          <button type="submit" title="Envoyer" class="btn btn-md btn-default text-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </div>
     </form>
   </section>
+
+
 
 
 
