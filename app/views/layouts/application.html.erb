@@ -64,6 +64,54 @@
 
     <%= yield %>
  
+<!-- Modal Create Grossip-->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class=" text-primary modal-title" id="exampleModalLongTitle">Création d'un nouveau Grossip</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <section class="d-flex justify-content-center">
+
+<% if @gossip != nil %>
+  <% if @gossip.errors.any? %>
+    <ul class="text-danger list-unstyled">
+      <% @gossip.errors.each_with_index do |message, i| %>
+        <li><i class="fab fa-accessible-icon text-danger mr-2"></i><%= message[1] %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+</section>
+
+<section class="d-flex justify-content-center">
+
+<form action='/gossips/' method='POST'>
+      <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+      <div class="d-flex justify-content-center">
+      <input type='text' name='gossip_title' placeholder='Ton titre'/><br/>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+      <input type='text' name='gossip_content' placeholder='Ton potin'/><br/>
+      </div>
+      <div class="modal-footer d-flex justify-content-center mt-3">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary" value='Envoyer'>Envoyer</button>
+      </div>
+</form>
+</section>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
   </body>
 </html>
 
