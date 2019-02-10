@@ -34,16 +34,19 @@ class UsersController < ApplicationController
 
     if save_city == true
       if city.save && user.save
-        redirect_to root_path(user.id)
+        flash[:success] = "Utilisateur  \"#{user.username}\" créé avec succès! Tu peux maintenant te connecter!"
+        redirect_to new_session_path
       else
+        flash[:danger] = 'Une erreur est survenue.'
         render new_user_path
+        flash.delete(:danger)
       end
     else
       if user.save
-        flash[:success] = 'Utilisateur créé avec succès!'
+        flash[:success] = "Utilisateur  \"#{user.username}\" créé avec succès! Tu peux maintenant te connecter!"
         redirect_to new_session_path
       else
-        flash[:danger] = 'Something went wrong.'
+        flash[:danger] = 'Une erreur est survenue.'
         render 'new'
         flash.delete(:danger)
       end

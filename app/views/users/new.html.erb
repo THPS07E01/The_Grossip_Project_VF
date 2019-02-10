@@ -12,6 +12,24 @@
 	<br/>
 
 
+<script>
+$(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
+
+
 </div>
 <div class="d-flex justify-content-center">
 	<h4 class="text-secondary text-center">Viens voir le docteur.</h4>
@@ -40,9 +58,12 @@
       <div class="d-flex justify-content-center">
       <input class="form-control" type='text' name='user_city' placeholder='Ville'/><br/>
       </div>
-      <div class="d-flex justify-content-center mb-3">
-      <input class="form-control" type='passsword' name='user_password' placeholder='Mot de passe'/><br/>
-      </div>
+      <div class="input-group  " id="show_hide_password">
+        <input class="form-control border border-right-0  " type="password" name='user_password' placeholder='Mot de passe'>
+        <div class="input-group-addon br-none border-top border-right border-bottom">
+          <a href=""><i class="fa fa-eye-slash pr-2 pt-2 " aria-hidden="true"></i></a>
+        </div>
+     </div>
       <h6>Champs optionnels</h6>
       <div class="d-flex justify-content-center">
       <input class="form-control" type='text' name='user_age' placeholder='Age'/><br/>
@@ -57,4 +78,3 @@
 </form>
 
 </section>
-

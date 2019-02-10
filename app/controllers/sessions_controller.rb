@@ -12,7 +12,6 @@ def create
     flash[:danger] = "Erreur : mauvais email ou mauvais password. (ou alors c'est toi qui est mauvais ;) )"
     render 'new'
     flash.delete(:danger)
-
   end
 end
 
