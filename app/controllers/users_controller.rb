@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     end
 
     #Création du user
-      user = User.new(
+      @user = User.new(
     username: params['user_username'], 
     first_name: params['user_first_name'], 
     last_name: params['user_last_name'], 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     )
 
     if save_city == true
-      if city.save && user.save
+      if city.save && @user.save
         flash[:success] = "Utilisateur  \"#{user.username}\" créé avec succès! Tu peux maintenant te connecter!"
         redirect_to new_session_path
       else
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
         flash.delete(:danger)
       end
     else
-      if user.save
+      if @user.save
         flash[:success] = "Utilisateur  \"#{user.username}\" créé avec succès! Tu peux maintenant te connecter!"
         redirect_to new_session_path
       else

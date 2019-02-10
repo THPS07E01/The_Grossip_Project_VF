@@ -40,6 +40,18 @@ $(document).ready(function() {
 
 <section class="d-flex justify-content-center">
 
+<% if @user != nil %>
+  <% if @user.errors.any? %>
+    <ul class="text-danger list-unstyled">
+      <% @user.errors.each_with_index do |message, i| %>
+        <li><i class="fab fa-accessible-icon text-danger mr-2"></i><%= message[1] %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+</section>
+<section class="d-flex justify-content-center">
+
 <form action='/users/' method='POST'>
       <input  type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
       
