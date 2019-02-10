@@ -33,3 +33,9 @@ color: white;
 .text-bx {
   color: #721124;
 }
+
+.form-control:focus{
+  border-color: #cccccc!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+}
