@@ -16,11 +16,16 @@
   <p class="d-flex justify-content-center"><strong>Ville</strong> :  <a href="<%= city_path(User.find(params[:id]).city.id) %>"><%= User.find(params[:id]).city.name %></a></p>
   <p class="d-flex justify-content-center"><strong>Gossips postés</strong> :</p>
   <% User.find(params[:id]).gossips.each do |gossip| %>
-  <p>
-    <%= gossip.title %><br/>
-    <%= gossip.content %><br/>
-    <%= link_to 'Voir le gossip', gossip_path(gossip.id) %>
-  </p>
+ <div class="card">
+  <div class="card-header">
+  <h5 class="card-title d-flex justify-content-center"><%= gossip.title %></h5>
+  </div>
+  <div class="card-body">
+    
+    <p class="card-text"><%= gossip.content %></p>
+    <p class="far fa-eye text-primary "><%= link_to 'Voir le gossip', gossip_path(gossip.id) %></p>
+  </div>
+</div>
   <% end %>
 </div>
 </div>
