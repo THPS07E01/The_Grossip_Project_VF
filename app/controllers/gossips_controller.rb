@@ -1,6 +1,6 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, except: [:index]
-
+  respond_to :js, :json, :html
 
   def index
     @gossip_id = params[:id]
@@ -23,6 +23,7 @@ class GossipsController < ApplicationController
   end
 
   def show
+    set_gossip
     @gossip_id = params[:id]
     @gossip_user_username = Gossip.find(params[:id]).user.username
     @gossip_user_id = Gossip.find(params[:id]).user.id
@@ -32,11 +33,11 @@ class GossipsController < ApplicationController
   end
 
   def edit
-    @gossip = Gossip.find(params[:id])
+    set_gossip
   end
 
   def update
-    @gossip = Gossip.find(params[:id])
+    set_gossip
     if post_params = params.require(:gossip).permit(:title, :content)
       @gossip.update(post_params)
       flash[:success] = 'Grossip édité avec succès!'
@@ -49,8 +50,23 @@ class GossipsController < ApplicationController
   end
 
   def destroy
-    @gossip = Gossip.find(params[:id])
+    set_gossip
     @gossip.destroy
     redirect_to gossips_path
+  end
+
+  def vote
+    set_gossip
+    if !current_user.liked? @gossip
+      @gossip.liked_by current_user
+    elsif current_user.liked? @gossip
+      @gossip.unliked_by current_user
+    end
+  end
+
+  private
+
+  def set_gossip
+    @gossip = Gossip.find(params[:id])
   end
 end

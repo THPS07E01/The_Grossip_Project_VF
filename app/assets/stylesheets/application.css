@@ -25,3 +25,11 @@ color: white;
   display: flex;
   justify-content: center;
 }
+
+.bg-bx {
+  background-color: #721124;
+}
+
+.text-bx {
+  color: #721124;
+}

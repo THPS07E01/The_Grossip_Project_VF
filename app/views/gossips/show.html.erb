@@ -6,50 +6,67 @@
 <% end %>
 
 
-<section class="d-flex justify-content-center mt-4">
-<div >
-<br/>
-
-
-<div class="d-flex justify-content-center">
-  <h3 class="text-primary"><strong><%= Gossip.find(params[:id]).title %></strong></h3>
-</div>
-<div class="d-flex justify-content">
-  <h4 class="font-italic text-secondary">- <%= Gossip.find(params[:id]).content %></h4>
-</div>
-<div class="d-flex justify-content-end">
-  <h6>by- <%= link_to "#{@gossip_user_username}", user_path(@gossip_user_id) %></h6>
-</div>
-<div class="d-flex justify-content-center">
-  <p><strong>Commentaires</strong> :</p>
-</div>
-
-    <% Gossip.find(params[:id]).comments.each do |comment| %>
-    <p> 
-      <span class="text-info"> <%= User.find(comment.user_id).username %> </span>
-      -
-      <%= comment.content %><br/>
-    </p>
-    <% end %>
+<section>
+  <div class="d-flex justify-content-center pt-2 mt-5 mr-5 pr-5">
+    <div>
+      <h3 class="text-primary mr-4"><strong><%= @gossip.title %></strong></h3>
+    </div>
   </div>
-  </section>
+  <div class="d-flex justify-content-center mt-3 ml-5 pl-5">
+    <div>
+      <h4 class="font-italic text-secondary">- <%= @gossip.content %></h4>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+    <h6> by - <%= link_to "#{@gossip_user_username}", user_path(@gossip_user_id) %></h6>
+  </div>
+</section>
 
-  <section class="d-flex justify-content-center ">
-    <form action='/comments/' method='POST'>
-        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-        <input type='hidden' name='gossip_id' value='<%= @gossip_id %>'>
-        <div class="d-flex justify-content-center">
-          <input type='text' name='comment_content' placeholder='Ton commentaire' /><br/>
-          <button type="submit" title="Envoyer" class="btn btn-md btn-default text-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+<section class="d-flex justify-content-center mt-2">
+  <div class="d-flex justify-content-center">
+      <%= link_to like_gossip_path(@gossip), class:"like-btn", method: :put, remote: :true do %>
+        <div>
+          <span><p><i class="fa fa-heart"></i> </p></span>
         </div>
-    </form>
-  </section>
+      <% end %>
+      <span class="likes-count ml-2"><%= @gossip.get_upvotes.size %></span>
+  <% if logged_in? && current_user.id == @gossip.user_id %>
+    <a  href="<%= edit_gossip_path(@gossip.user_id) %>"><i class="mr-3 ml-3 fas fa-pencil-alt"></i> </a>
+    <a href="<%= gossip_path(@gossip.user_id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE"><i class="fas fa-trash-alt"></i></a>
+  <% else %>
+  <% end %>
+  </div>
+</section>
 
-<div class="d-flex justify-content-center">
-<% if logged_in? && current_user.id == Gossip.find(params[:id]).user_id %>
+<section class="d-flex justify-content-center mt-2 mb-4">
+  <form action='/comments/' method='POST'>
+      <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+      <input type='hidden' name='gossip_id' value='<%= @gossip_id %>'>
+      <div class="d-flex justify-content-center">
+        <input type='text' name='comment_content' placeholder='Ton commentaire' /><br/>
+        <button type="submit" title="Envoyer" class="btn btn-md btn-default text-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+      </div>
+  </form>
+</section>
 
-          <a  href="<%= edit_gossip_path(Gossip.find(params[:id]).user_id) %>"><i class="mr-3 ml-3 fas fa-pencil-alt"></i> </a>
-          <a href="<%= gossip_path(Gossip.find(params[:id]).user_id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE"><i class="fas fa-trash-alt"></i></a>
-          <% else %>
-          <% end %>
-</div>
+<section class="mr-4 ml-4">
+  <div class="d-flex justify-content-center mt-4">
+    <p><strong>Commentaires</strong> :</p>
+  </div>
+  <% @gossip.comments.each do |comment| %>
+    <div>
+      <p> 
+        <span class="text-info"> <%= User.find(comment.user_id).username %> </span>
+        -
+        <%= comment.content %><br/>
+      </p>
+    </div>
+  <% end %>
+  </div>
+</section>
+
+
+
+
+
+
